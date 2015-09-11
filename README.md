@@ -7,3 +7,5 @@
 ```open rac-bug/rac-bug.xcworkspace```
 
 - Run the rac-bug scheme
+
+- See AppDelegate.swift
