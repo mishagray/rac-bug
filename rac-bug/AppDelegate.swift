@@ -9,22 +9,33 @@
 import UIKit
 import ReactiveCocoa
 
+enum BugType {
+    case NoBug
+    case Bug1
+    case Bug2
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func signalProducers(#bug: Bool) {
+    func signalProducers(#bug: BugType) {
         let scheduler = QueueScheduler(priority: DISPATCH_QUEUE_PRIORITY_DEFAULT, name: "rac-bug.first")
         
         let signals = (0..<100).map { _ -> SignalProducer<Void, NoError> in
-            if bug {
+            if bug == .Bug1 {
                 return SignalProducer<Void, NoError>.empty |> startOn(scheduler)
             }
             return SignalProducer<Void, NoError>.empty
         }
         
-        combineLatest(signals) |> start()
+        if bug == .Bug2 {
+            combineLatest(signals) |> startOn(scheduler) |> start()
+        } else {
+            combineLatest(signals) |> start()
+        }
+        
     }
     
     func signals() {
@@ -46,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         signals()
-        signalProducers(bug: true)
+        signalProducers(bug: .Bug1)
         
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
