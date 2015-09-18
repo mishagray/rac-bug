@@ -37,26 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
-    
-    func signals() {
-        let signalPipe = Signal<Void, NoError>.pipe()
-        let signalProducer: SignalProducer<Void, NoError> = SignalProducer { (sink, disposable) in
-            let internalDisposable = signalPipe.0.observe(sink)
-            disposable.addDisposable(internalDisposable)
-        }
-        
-        signalProducer
-            |> on(started: {
-                sendCompleted(signalPipe.1)
-            })
-            |> on(event:{ e in println("event \(e)")} )
-            |> start()
-
-    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        signals()
         signalProducers(bug: .Bug1)
         
         
