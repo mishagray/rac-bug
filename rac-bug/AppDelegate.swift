@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func signalProducers(bug bug: BugType) {
         let scheduler = QueueScheduler(qos: QOS_CLASS_DEFAULT, name: "rac-bug.first")
         
-        let signals = (0..<100).map { _ -> SignalProducer<Void, NoError> in
+        let signals = (0..<1000).map { _ -> SignalProducer<Void, NoError> in
             if bug == .Bug1 {
                 return SignalProducer<Void, NoError>.empty.startOn(scheduler)
             }
@@ -43,8 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         signalProducers(bug: .Bug1)
         
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.makeKeyAndVisible()
         return true
     }
 
