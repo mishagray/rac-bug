@@ -11,10 +11,8 @@
 		9847163B1BA2C8F40057F69E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9847163A1BA2C8F40057F69E /* Images.xcassets */; };
 		9847163E1BA2C8F40057F69E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9847163C1BA2C8F40057F69E /* LaunchScreen.xib */; };
 		9847165A1BA2CD070057F69E /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984716571BA2CCCA0057F69E /* ReactiveCocoa.framework */; };
-		9847165D1BA2CD0A0057F69E /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984716551BA2CCC70057F69E /* Box.framework */; };
 		9847165F1BA2CD0D0057F69E /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984716531BA2CCC50057F69E /* Result.framework */; };
 		984716611BA2CF550057F69E /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 984716571BA2CCCA0057F69E /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		984716621BA2CF550057F69E /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 984716551BA2CCC70057F69E /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		984716631BA2CF550057F69E /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 984716531BA2CCC50057F69E /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -26,7 +24,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				984716611BA2CF550057F69E /* ReactiveCocoa.framework in Embed Frameworks */,
-				984716621BA2CF550057F69E /* Box.framework in Embed Frameworks */,
 				984716631BA2CF550057F69E /* Result.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -51,7 +48,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9847165F1BA2CD0D0057F69E /* Result.framework in Frameworks */,
-				9847165D1BA2CD0A0057F69E /* Box.framework in Frameworks */,
 				9847165A1BA2CD070057F69E /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +128,8 @@
 		984716261BA2C8F40057F69E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Jeremie Girault";
 				TargetAttributes = {

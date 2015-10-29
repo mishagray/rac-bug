@@ -20,20 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func signalProducers(#bug: BugType) {
-        let scheduler = QueueScheduler(priority: DISPATCH_QUEUE_PRIORITY_DEFAULT, name: "rac-bug.first")
+    func signalProducers(bug bug: BugType) {
+        let scheduler = QueueScheduler(qos: QOS_CLASS_DEFAULT, name: "rac-bug.first")
         
         let signals = (0..<100).map { _ -> SignalProducer<Void, NoError> in
             if bug == .Bug1 {
-                return SignalProducer<Void, NoError>.empty |> startOn(scheduler)
+                return SignalProducer<Void, NoError>.empty.startOn(scheduler)
             }
             return SignalProducer<Void, NoError>.empty
         }
         
         if bug == .Bug2 {
-            combineLatest(signals) |> startOn(scheduler) |> start()
+            combineLatest(signals).startOn(scheduler).start()
         } else {
-            combineLatest(signals) |> start()
+            combineLatest(signals).start()
         }
         
     }
